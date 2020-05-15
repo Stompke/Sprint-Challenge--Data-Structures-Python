@@ -39,4 +39,56 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        pass
+        # print('start')
+        if self.head:
+            if self.head.get_next():
+                if node is self.head:
+                    print('HEAD NODE: node is head')
+                    # print(node.value)
+                    # previous_node = self.add_to_head(node.value)
+                    # print(node.value)
+                    self.reverse_list(node.next_node, node)
+                    # previous_node.next_node = None
+                elif node.get_next():
+                    # print('node.next_node is true')
+                    # print(node.value)
+                    # print(node.next_node.value)
+                    self.add_to_head(node.value)
+                    # print(node.value)
+                    self.reverse_list(node.next_node, node)
+                    prev.set_next(None)
+                elif node.get_next() is None:
+                    # print('LASTNODE: node.next_node is false')
+                    # print(node.value)
+                    # self.head = None
+                    # print(node.value)
+                    self.add_to_head(node.value)
+                    prev.set_next(None)
+                    # print(node.next_node.value)
+                    # self.reverse_list(node.next_node, None)
+
+        
+
+
+ll = LinkedList()
+ll.add_to_head(1)
+ll.add_to_head(2)
+ll.add_to_head(3)
+# ll.add_to_head(4)
+# ll.add_to_head(5)
+# print(ll.head.value)
+# print(ll.head.next_node.value)
+# print(ll.head.next_node.next_node.value)
+# 
+# print("Get Head 1: ", ll.head.get_value())
+print(ll.head.value)
+print(ll.head.next_node.value)
+print(ll.head.next_node.next_node.value)
+print('Reverse List: ', ll.reverse_list(ll.head, None))
+# print("Get Head 2: ", ll.head.get_value())
+print(ll.head.value)
+print(ll.head.next_node.value)
+print(ll.head.next_node.next_node.value)
+# print(ll.head.next_node.next_node.next_node.value)
+# print(ll.head.next_node.next_node.next_node.next_node.value)
+# print(ll.head.next_node.next_node.next_nodevalue)
