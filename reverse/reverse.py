@@ -39,4 +39,45 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        pass
+        # Is the list empty?
+        if self.head:
+            # Does the list contain more than 1 node?
+            if self.head.get_next():
+                # Is it the first node?
+                if node is self.head:
+                    self.reverse_list(node.next_node, node)
+                # Is it a middle node?
+                elif node.get_next():
+                    self.add_to_head(node.value)
+                    self.reverse_list(node.next_node, node)
+                    prev.set_next(None)
+                # Is it the last node?
+                elif node.get_next() is None:
+                    self.add_to_head(node.value)
+                    prev.set_next(None)
+
+        
+
+
+ll = LinkedList()
+ll.add_to_head(1)
+ll.add_to_head(2)
+ll.add_to_head(3)
+# ll.add_to_head(4)
+# ll.add_to_head(5)
+# print(ll.head.value)
+# print(ll.head.next_node.value)
+# print(ll.head.next_node.next_node.value)
+# 
+# print("Get Head 1: ", ll.head.get_value())
+print(ll.head.value)
+print(ll.head.next_node.value)
+print(ll.head.next_node.next_node.value)
+print('Reverse List: ', ll.reverse_list(ll.head, None))
+# print("Get Head 2: ", ll.head.get_value())
+print(ll.head.value)
+print(ll.head.next_node.value)
+print(ll.head.next_node.next_node.value)
+# print(ll.head.next_node.next_node.next_node.value)
+# print(ll.head.next_node.next_node.next_node.next_node.value)
+# print(ll.head.next_node.next_node.next_nodevalue)
