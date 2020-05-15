@@ -39,33 +39,22 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        # print('start')
+        # Is the list empty?
         if self.head:
+            # Does the list contain more than 1 node?
             if self.head.get_next():
+                # Is it the first node?
                 if node is self.head:
-                    print('HEAD NODE: node is head')
-                    # print(node.value)
-                    # previous_node = self.add_to_head(node.value)
-                    # print(node.value)
                     self.reverse_list(node.next_node, node)
-                    # previous_node.next_node = None
+                # Is it a middle node?
                 elif node.get_next():
-                    # print('node.next_node is true')
-                    # print(node.value)
-                    # print(node.next_node.value)
                     self.add_to_head(node.value)
-                    # print(node.value)
                     self.reverse_list(node.next_node, node)
                     prev.set_next(None)
+                # Is it the last node?
                 elif node.get_next() is None:
-                    # print('LASTNODE: node.next_node is false')
-                    # print(node.value)
-                    # self.head = None
-                    # print(node.value)
                     self.add_to_head(node.value)
                     prev.set_next(None)
-                    # print(node.next_node.value)
-                    # self.reverse_list(node.next_node, None)
 
         
 
